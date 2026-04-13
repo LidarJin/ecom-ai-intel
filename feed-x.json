@@ -1,6 +1,12 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-04-13T04:35:19.133Z",
   "lookbackHours": 168,
   "x": [],
-  "stats": { "xAccounts": 0, "totalTweets": 0 }
+  "stats": {
+    "xAccounts": 0,
+    "totalTweets": 0
+  },
+  "errors": [
+    "X API: User lookup failed: HTTP 401"
+  ]
 }
