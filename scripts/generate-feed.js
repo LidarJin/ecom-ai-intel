@@ -340,6 +340,24 @@ function extractArticleContent(html) {
     if (dateMatch) publishedAt = dateMatch[1];
   }
 
+  // Date fallback: <time> tags
+  if (!publishedAt) {
+    const timeMatch = html.match(/<time[^>]*datetime="([^"]*)"[^>]*>/i);
+    if (timeMatch) publishedAt = timeMatch[1];
+  }
+
+  // Date fallback: visible date text (e.g. "February 11, 2026" or "April 9, 2026")
+  // Only match dates in 2025-2027 range to avoid false positives
+  if (!publishedAt) {
+    const visibleDate = html.match(/(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+202[5-7]/i);
+    if (visibleDate) {
+      try {
+        const parsed = new Date(visibleDate[0]);
+        if (!isNaN(parsed.getTime())) publishedAt = parsed.toISOString();
+      } catch { /* ignore parse errors */ }
+    }
+  }
+
   // Content extraction: try <article>, then main content area
   if (!content) {
     const articleMatch = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
@@ -450,10 +468,19 @@ async function fetchBlogContent(blogs, state, errors) {
       }
 
       // Filter: unseen + within lookback window
+      // For articles without dates (common with HTML scraping), limit to top 2
+      // to avoid pulling in months of history on first run. Articles with dates
+      // within the lookback window can go up to MAX_ARTICLES_PER_BLOG.
       const newArticles = [];
+      let undatedCount = 0;
+      const MAX_UNDATED = 2;
       for (const article of candidates.slice(0, MAX_ARTICLES_PER_BLOG * 2)) {
         if (state.seenArticles[article.url]) continue;
         if (article.publishedAt && new Date(article.publishedAt) < cutoff) continue;
+        if (!article.publishedAt) {
+          undatedCount++;
+          if (undatedCount > MAX_UNDATED) continue;
+        }
         newArticles.push(article);
         if (newArticles.length >= MAX_ARTICLES_PER_BLOG) break;
       }
@@ -495,6 +522,15 @@ async function fetchBlogContent(blogs, state, errors) {
 
           if (!extracted.content || extracted.content.length < 100) {
             errors.push(`Blog: No content extracted from ${article.url}`);
+            continue;
+          }
+
+          // Post-fetch date filter: if we now have a date from the article page,
+          // check it against the lookback window. This catches old articles that
+          // had no date on the index page but do have one in the article body.
+          if (extracted.publishedAt && new Date(extracted.publishedAt) < cutoff) {
+            console.error(`      Skipping "${extracted.title}" (published ${extracted.publishedAt}, too old)`);
+            state.seenArticles[article.url] = Date.now();
             continue;
           }
 
