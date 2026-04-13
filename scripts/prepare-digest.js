@@ -23,11 +23,10 @@ import { homedir } from 'os';
 const USER_DIR = join(homedir(), '.ecom-ai-intel');
 const CONFIG_PATH = join(USER_DIR, 'config.json');
 
-// TODO: Update these URLs once the repo is created on GitHub
-const FEED_X_URL = 'https://raw.githubusercontent.com/USER/ecom-ai-intel/main/feed-x.json';
-const FEED_BLOGS_URL = 'https://raw.githubusercontent.com/USER/ecom-ai-intel/main/feed-blogs.json';
+const FEED_X_URL = 'https://raw.githubusercontent.com/LidarJin/ecom-ai-intel/main/feed-x.json';
+const FEED_BLOGS_URL = 'https://raw.githubusercontent.com/LidarJin/ecom-ai-intel/main/feed-blogs.json';
 
-const PROMPTS_BASE = 'https://raw.githubusercontent.com/USER/ecom-ai-intel/main/prompts';
+const PROMPTS_BASE = 'https://raw.githubusercontent.com/LidarJin/ecom-ai-intel/main/prompts';
 const PROMPT_FILES = [
   'summarize-tweets.md',
   'summarize-blogs.md',
