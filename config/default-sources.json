@@ -1,0 +1,68 @@
+{
+  "blogs": [
+    {
+      "name": "Shopify News",
+      "type": "scrape",
+      "indexUrl": "https://www.shopify.com/news",
+      "linkPattern": "/news/[slug]",
+      "fetchMethod": "http"
+    },
+    {
+      "name": "Gorgias Blog",
+      "type": "scrape",
+      "indexUrl": "https://www.gorgias.com/blog",
+      "linkPattern": "/blog/[slug]",
+      "fetchMethod": "http",
+      "aiKeywords": ["ai", "agent", "automat", "copilot", "llm", "gpt", "machine learning", "autonomous"]
+    },
+    {
+      "name": "Loop Returns Blog",
+      "type": "scrape",
+      "indexUrl": "https://www.loopreturns.com/blog",
+      "linkPattern": "/blog/[slug]",
+      "fetchMethod": "http"
+    },
+    {
+      "name": "Narvar Blog",
+      "type": "scrape",
+      "indexUrl": "https://corp.narvar.com/blog",
+      "linkPattern": "/blog/[slug]",
+      "fetchMethod": "http"
+    },
+    {
+      "name": "parcelLab Blog",
+      "type": "scrape",
+      "indexUrl": "https://parcellab.com/blog",
+      "linkPattern": "parcellab.com/blog/[slug]",
+      "fetchMethod": "http"
+    },
+    {
+      "name": "Klaviyo Blog",
+      "type": "scrape",
+      "indexUrl": "https://www.klaviyo.com/blog",
+      "linkPattern": "/blog/[slug]",
+      "fetchMethod": "http",
+      "aiKeywords": ["ai", "agent", "automat", "machine learning", "personalization", "predict"]
+    },
+    {
+      "name": "Redo Blog",
+      "type": "scrape",
+      "indexUrl": "https://redo.com/blog",
+      "linkPattern": "/blogs/[slug]",
+      "fetchMethod": "http"
+    }
+  ],
+  "x_accounts": [
+    { "name": "Tobi Lutke", "handle": "tobi", "category": "person", "company": "Shopify" },
+    { "name": "Romain Lapeyre", "handle": "Romain_Lapeyre", "category": "person", "company": "Gorgias" },
+    { "name": "Tomer Tagrin", "handle": "ttagrin", "category": "person", "company": "Yotpo" },
+    { "name": "Sterling Snow", "handle": "sterlingmsnow", "category": "person", "company": "Redo" },
+    { "name": "Vanessa Lee", "handle": "vlaurenlee", "category": "person", "company": "Shopify" },
+    { "name": "Jonathan Poma", "handle": "pomajp", "category": "person", "company": "Loop Returns" },
+    { "name": "Shopify", "handle": "Shopify", "category": "company", "company": "Shopify" },
+    { "name": "Shopify Devs", "handle": "ShopifyDevs", "category": "company", "company": "Shopify" },
+    { "name": "Gorgias", "handle": "gorgiasio", "category": "company", "company": "Gorgias" },
+    { "name": "Klaviyo", "handle": "klaviyo", "category": "company", "company": "Klaviyo" },
+    { "name": "Loop Returns", "handle": "LoopReturns", "category": "company", "company": "Loop Returns" }
+  ]
+}
