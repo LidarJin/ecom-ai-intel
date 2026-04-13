@@ -1,1 +1,13 @@
-{"seenTweets":{},"seenArticles":{}}
+{
+  "seenTweets": {},
+  "seenArticles": {
+    "https://www.loopreturns.com/blog/package-protection-ecommerce-guide": 1776064662164,
+    "https://www.loopreturns.com/blog/post-purchase-ops-playbook": 1776064662432,
+    "https://parcellab.com/blog/how-retailers-can-reduce-their-ecommerce-return-rates-in-2026": 1776064665662,
+    "https://parcellab.com/blog/nrf-26-recap-how-true-classic-built-a-post-purchase-journey-that-never-ends": 1776064665740,
+    "https://www.klaviyo.com/blog/seasonal-shopping-insights-q126": 1776064667936,
+    "https://www.klaviyo.com/blog/email-design-tips": 1776064668855,
+    "https://redo.com/blogs/redo-named-to-forbes-2025-cloud-100-rising-stars-list": 1776064669963,
+    "https://redo.com/blogs/consumer-buying-behavior": 1776064669994
+  }
+}
