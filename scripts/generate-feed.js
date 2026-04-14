@@ -180,8 +180,9 @@ async function fetchXContent(xAccounts, apiToken, state, errors) {
   const endDate = `${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${now.getFullYear()}`;
 
   // Build inputs for Bright Data — one entry per account
+  // Bright Data expects uppercase field names per their docs
   const inputs = xAccounts.map(a => ({
-    url: `https://x.com/${a.handle}`,
+    URL: `https://x.com/${a.handle}`,
     start_date: startDate,
     end_date: endDate
   }));
@@ -264,7 +265,7 @@ async function fetchLinkedInContent(linkedinAccounts, apiToken, state, errors) {
 
   const cutoff = new Date(Date.now() - LINKEDIN_LOOKBACK_HOURS * 60 * 60 * 1000);
 
-  const inputs = linkedinAccounts.map(a => ({ url: a.url }));
+  const inputs = linkedinAccounts.map(a => ({ URL: a.url }));
 
   console.error(`  Requesting LinkedIn posts for ${linkedinAccounts.length} accounts...`);
   const rawResults = await brightdataScrape(BD_LINKEDIN_POSTS, inputs, apiToken, errors, 'LinkedIn');
