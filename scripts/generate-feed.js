@@ -85,7 +85,7 @@ async function brightdataScrape(datasetId, inputs, apiToken, errors, label) {
   try {
     // Step 1: Trigger the scraper
     const triggerRes = await fetch(
-      `${BRIGHTDATA_API_BASE}/trigger?dataset_id=${datasetId}&format=json&type=discover_new&discover_by=url`,
+      `${BRIGHTDATA_API_BASE}/trigger?dataset_id=${datasetId}&format=json`,
       {
         method: 'POST',
         headers: {
@@ -102,10 +102,28 @@ async function brightdataScrape(datasetId, inputs, apiToken, errors, label) {
       return null;
     }
 
-    const triggerData = await triggerRes.json();
+    // Bright Data may return results directly (sync) or a snapshot_id (async)
+    const contentType = triggerRes.headers.get('content-type') || '';
+    const responseText = await triggerRes.text();
+
+    // Try parsing as JSON
+    let triggerData;
+    try {
+      triggerData = JSON.parse(responseText);
+    } catch {
+      errors.push(`${label}: Invalid response: ${responseText.slice(0, 200)}`);
+      return null;
+    }
+
+    // If response is an array, results came back synchronously
+    if (Array.isArray(triggerData)) {
+      console.error(`    ${label}: got ${triggerData.length} results (sync)`);
+      return triggerData;
+    }
+
     const snapshotId = triggerData.snapshot_id;
     if (!snapshotId) {
-      errors.push(`${label}: No snapshot_id returned`);
+      errors.push(`${label}: No snapshot_id returned: ${JSON.stringify(triggerData).slice(0, 200)}`);
       return null;
     }
     console.error(`    ${label}: triggered, snapshot_id=${snapshotId}`);
