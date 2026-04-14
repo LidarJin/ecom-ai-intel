@@ -64,5 +64,13 @@
     { "name": "Gorgias", "handle": "gorgiasio", "category": "company", "company": "Gorgias" },
     { "name": "Klaviyo", "handle": "klaviyo", "category": "company", "company": "Klaviyo" },
     { "name": "Loop Returns", "handle": "LoopReturns", "category": "company", "company": "Loop Returns" }
+  ],
+  "linkedin_accounts": [
+    { "name": "Anisa Kumar", "url": "https://www.linkedin.com/in/anisa-kumar-narvar/", "company": "Narvar" },
+    { "name": "Romain Lapeyre", "url": "https://www.linkedin.com/in/romain-lapeyre/", "company": "Gorgias" },
+    { "name": "Tobias Buxhoidt", "url": "https://www.linkedin.com/in/tobias-buxhoidt/", "company": "parcelLab" },
+    { "name": "Sterling Snow", "url": "https://www.linkedin.com/in/sterlingsnow/", "company": "Redo" },
+    { "name": "Hannah Bravo", "url": "https://www.linkedin.com/in/hannah-bravo/", "company": "Loop Returns" },
+    { "name": "Andrew Bialecki", "url": "https://www.linkedin.com/in/andrewbialecki/", "company": "Klaviyo" }
   ]
 }

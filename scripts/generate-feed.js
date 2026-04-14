@@ -4,13 +4,13 @@
 // Ecommerce AI Intel — Central Feed Generator
 // ============================================================================
 // Runs on GitHub Actions (weekly) to fetch content and publish
-// feed-x.json and feed-blogs.json.
+// feed-x.json, feed-linkedin.json, and feed-blogs.json.
 //
-// Deduplication: tracks previously seen tweet IDs and article URLs
+// Deduplication: tracks previously seen post IDs/URLs
 // in state-feed.json so content is never repeated across runs.
 //
-// Usage: node generate-feed.js [--tweets-only | --blogs-only]
-// Env vars needed: X_BEARER_TOKEN
+// Usage: node generate-feed.js [--tweets-only | --linkedin-only | --blogs-only]
+// Env vars needed: BRIGHTDATA_API_TOKEN
 // ============================================================================
 
 import { readFile, writeFile } from 'fs/promises';
@@ -19,12 +19,18 @@ import { join } from 'path';
 
 // -- Constants ---------------------------------------------------------------
 
-const X_API_BASE = 'https://api.x.com/2';
+const BRIGHTDATA_API_BASE = 'https://api.brightdata.com/datasets/v3';
 const BROWSER_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 const TWEET_LOOKBACK_HOURS = 168; // 7 days
+const LINKEDIN_LOOKBACK_HOURS = 168; // 7 days
 const BLOG_LOOKBACK_HOURS = 168;  // 7 days
-const MAX_TWEETS_PER_USER = 5;
+const MAX_POSTS_PER_USER = 5;
 const MAX_ARTICLES_PER_BLOG = 5;
+
+// Bright Data dataset IDs
+const BD_TWITTER_POSTS = 'gd_twtr_posts_by_user_url';  // Twitter posts by profile URL
+const BD_TWITTER_PROFILES = 'gd_twtr_profiles';          // Twitter profile info
+const BD_LINKEDIN_POSTS = 'gd_lyy3tktm25m4avu764';       // LinkedIn posts
 
 const SCRIPT_DIR = decodeURIComponent(new URL('.', import.meta.url).pathname);
 const STATE_PATH = join(SCRIPT_DIR, '..', 'state-feed.json');
@@ -33,22 +39,26 @@ const STATE_PATH = join(SCRIPT_DIR, '..', 'state-feed.json');
 
 async function loadState() {
   if (!existsSync(STATE_PATH)) {
-    return { seenTweets: {}, seenArticles: {} };
+    return { seenTweets: {}, seenLinkedin: {}, seenArticles: {} };
   }
   try {
     const state = JSON.parse(await readFile(STATE_PATH, 'utf-8'));
     if (!state.seenArticles) state.seenArticles = {};
     if (!state.seenTweets) state.seenTweets = {};
+    if (!state.seenLinkedin) state.seenLinkedin = {};
     return state;
   } catch {
-    return { seenTweets: {}, seenArticles: {} };
+    return { seenTweets: {}, seenLinkedin: {}, seenArticles: {} };
   }
 }
 
 async function saveState(state) {
-  const cutoff = Date.now() - 14 * 24 * 60 * 60 * 1000; // 14 days for weekly
+  const cutoff = Date.now() - 14 * 24 * 60 * 60 * 1000;
   for (const [id, ts] of Object.entries(state.seenTweets)) {
     if (ts < cutoff) delete state.seenTweets[id];
+  }
+  for (const [id, ts] of Object.entries(state.seenLinkedin)) {
+    if (ts < cutoff) delete state.seenLinkedin[id];
   }
   for (const [id, ts] of Object.entries(state.seenArticles)) {
     if (ts < cutoff) delete state.seenArticles[id];
@@ -63,109 +73,248 @@ async function loadSources() {
   return JSON.parse(await readFile(sourcesPath, 'utf-8'));
 }
 
-// -- X/Twitter Fetching (Official API v2) ------------------------------------
+// -- Bright Data helpers -----------------------------------------------------
 
-async function fetchXContent(xAccounts, bearerToken, state, errors) {
+// Trigger a Bright Data scraper and wait for results.
+// Returns an array of result objects, or null on failure.
+// Bright Data's flow: POST trigger → get snapshot_id → poll until ready → download
+async function brightdataScrape(datasetId, inputs, apiToken, errors, label) {
+  const maxPollAttempts = 20;
+  const pollInterval = 15000; // 15 seconds
+
+  try {
+    // Step 1: Trigger the scraper
+    const triggerRes = await fetch(
+      `${BRIGHTDATA_API_BASE}/trigger?dataset_id=${datasetId}&format=json&type=discover_new&discover_by=url`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(inputs)
+      }
+    );
+
+    if (!triggerRes.ok) {
+      const errText = await triggerRes.text().catch(() => '');
+      errors.push(`${label}: Trigger failed HTTP ${triggerRes.status}: ${errText.slice(0, 200)}`);
+      return null;
+    }
+
+    const triggerData = await triggerRes.json();
+    const snapshotId = triggerData.snapshot_id;
+    if (!snapshotId) {
+      errors.push(`${label}: No snapshot_id returned`);
+      return null;
+    }
+    console.error(`    ${label}: triggered, snapshot_id=${snapshotId}`);
+
+    // Step 2: Poll for completion
+    for (let i = 0; i < maxPollAttempts; i++) {
+      await new Promise(r => setTimeout(r, pollInterval));
+
+      const statusRes = await fetch(
+        `${BRIGHTDATA_API_BASE}/progress/${snapshotId}`,
+        { headers: { 'Authorization': `Bearer ${apiToken}` } }
+      );
+
+      if (!statusRes.ok) continue;
+      const statusData = await statusRes.json();
+      console.error(`    ${label}: status=${statusData.status} (attempt ${i + 1})`);
+
+      if (statusData.status === 'ready') {
+        // Step 3: Download results
+        const dataRes = await fetch(
+          `${BRIGHTDATA_API_BASE}/snapshot/${snapshotId}?format=json`,
+          { headers: { 'Authorization': `Bearer ${apiToken}` } }
+        );
+        if (!dataRes.ok) {
+          errors.push(`${label}: Download failed HTTP ${dataRes.status}`);
+          return null;
+        }
+        return await dataRes.json();
+      }
+
+      if (statusData.status === 'failed') {
+        errors.push(`${label}: Scrape failed — ${statusData.error || 'unknown error'}`);
+        return null;
+      }
+    }
+
+    errors.push(`${label}: Timed out waiting for results`);
+    return null;
+  } catch (err) {
+    errors.push(`${label}: ${err.message}`);
+    return null;
+  }
+}
+
+// -- X/Twitter Fetching (via Bright Data) ------------------------------------
+
+async function fetchXContent(xAccounts, apiToken, state, errors) {
   const results = [];
   const cutoff = new Date(Date.now() - TWEET_LOOKBACK_HOURS * 60 * 60 * 1000);
 
-  // Batch lookup all user IDs
-  const handles = xAccounts.map(a => a.handle);
-  let userMap = {};
+  // Format dates for Bright Data: MM-DD-YYYY
+  const startDate = `${String(cutoff.getMonth() + 1).padStart(2, '0')}-${String(cutoff.getDate()).padStart(2, '0')}-${cutoff.getFullYear()}`;
+  const now = new Date();
+  const endDate = `${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${now.getFullYear()}`;
 
-  for (let i = 0; i < handles.length; i += 100) {
-    const batch = handles.slice(i, i + 100);
-    try {
-      const res = await fetch(
-        `${X_API_BASE}/users/by?usernames=${batch.join(',')}&user.fields=name,description`,
-        { headers: { 'Authorization': `Bearer ${bearerToken}` } }
-      );
+  // Build inputs for Bright Data — one entry per account
+  const inputs = xAccounts.map(a => ({
+    url: `https://x.com/${a.handle}`,
+    start_date: startDate,
+    end_date: endDate
+  }));
 
-      if (!res.ok) {
-        errors.push(`X API: User lookup failed: HTTP ${res.status}`);
-        continue;
-      }
+  console.error(`  Requesting tweets for ${xAccounts.length} accounts (${startDate} to ${endDate})...`);
+  const rawResults = await brightdataScrape(BD_TWITTER_POSTS, inputs, apiToken, errors, 'X/Twitter');
 
-      const data = await res.json();
-      for (const user of (data.data || [])) {
-        userMap[user.username.toLowerCase()] = {
-          id: user.id,
-          name: user.name,
-          description: user.description || ''
-        };
-      }
-      if (data.errors) {
-        for (const err of data.errors) {
-          errors.push(`X API: User not found: ${err.value || err.detail}`);
-        }
-      }
-    } catch (err) {
-      errors.push(`X API: User lookup error: ${err.message}`);
-    }
+  if (!rawResults || !Array.isArray(rawResults)) {
+    console.error('  No results from Bright Data');
+    return results;
   }
 
-  // Fetch recent tweets per user
+  console.error(`  Bright Data returned ${rawResults.length} raw posts`);
+
+  // Group posts by user
+  const byUser = {};
+  for (const post of rawResults) {
+    // Bright Data returns fields like: user_posted, name, description, date_posted, url, id, etc.
+    const handle = post.user_posted || post.screen_name || '';
+    if (!handle) continue;
+
+    const handleLower = handle.toLowerCase();
+    if (!byUser[handleLower]) {
+      byUser[handleLower] = {
+        name: post.name || handle,
+        bio: post.description || post.user_description || '',
+        posts: []
+      };
+    }
+    byUser[handleLower].posts.push(post);
+  }
+
+  // Process each account
   for (const account of xAccounts) {
-    const userData = userMap[account.handle.toLowerCase()];
-    if (!userData) continue;
+    const handleLower = account.handle.toLowerCase();
+    const userData = byUser[handleLower];
+    if (!userData || userData.posts.length === 0) continue;
 
-    try {
-      const res = await fetch(
-        `${X_API_BASE}/users/${userData.id}/tweets?` +
-        `max_results=10` +
-        `&tweet.fields=created_at,public_metrics,referenced_tweets,note_tweet` +
-        `&exclude=retweets,replies` +
-        `&start_time=${cutoff.toISOString()}`,
-        { headers: { 'Authorization': `Bearer ${bearerToken}` } }
-      );
+    const newTweets = [];
+    for (const post of userData.posts) {
+      const postId = post.id || post.tweet_id || post.url?.split('/')?.pop() || '';
+      if (!postId || state.seenTweets[postId]) continue;
+      if (newTweets.length >= MAX_POSTS_PER_USER) break;
 
-      if (!res.ok) {
-        if (res.status === 429) {
-          errors.push(`X API: Rate limited, skipping remaining accounts`);
-          break;
-        }
-        errors.push(`X API: Failed to fetch tweets for @${account.handle}: HTTP ${res.status}`);
-        continue;
-      }
-
-      const data = await res.json();
-      const allTweets = data.data || [];
-
-      const newTweets = [];
-      for (const t of allTweets) {
-        if (state.seenTweets[t.id]) continue;
-        if (newTweets.length >= MAX_TWEETS_PER_USER) break;
-
-        newTweets.push({
-          id: t.id,
-          text: t.note_tweet?.text || t.text,
-          createdAt: t.created_at,
-          url: `https://x.com/${account.handle}/status/${t.id}`,
-          likes: t.public_metrics?.like_count || 0,
-          retweets: t.public_metrics?.retweet_count || 0,
-          replies: t.public_metrics?.reply_count || 0,
-          isQuote: t.referenced_tweets?.some(r => r.type === 'quoted') || false
-        });
-
-        state.seenTweets[t.id] = Date.now();
-      }
-
-      if (newTweets.length === 0) continue;
-
-      results.push({
-        source: 'x',
-        name: account.name,
-        handle: account.handle,
-        category: account.category || 'person',
-        company: account.company || '',
-        bio: userData.description,
-        tweets: newTweets
+      const postUrl = post.url || `https://x.com/${account.handle}/status/${postId}`;
+      newTweets.push({
+        id: postId,
+        text: post.text || post.tweet_text || post.content || '',
+        createdAt: post.date_posted || post.created_at || null,
+        url: postUrl,
+        likes: post.likes || post.favorite_count || 0,
+        retweets: post.retweets || post.retweet_count || 0,
+        replies: post.replies || post.reply_count || 0
       });
 
-      await new Promise(r => setTimeout(r, 200));
-    } catch (err) {
-      errors.push(`X API: Error fetching @${account.handle}: ${err.message}`);
+      state.seenTweets[postId] = Date.now();
     }
+
+    if (newTweets.length === 0) continue;
+
+    results.push({
+      source: 'x',
+      name: account.name,
+      handle: account.handle,
+      category: account.category || 'person',
+      company: account.company || '',
+      bio: userData.bio,
+      tweets: newTweets
+    });
+  }
+
+  return results;
+}
+
+// -- LinkedIn Fetching (via Bright Data) -------------------------------------
+
+async function fetchLinkedInContent(linkedinAccounts, apiToken, state, errors) {
+  const results = [];
+  if (!linkedinAccounts || linkedinAccounts.length === 0) return results;
+
+  const cutoff = new Date(Date.now() - LINKEDIN_LOOKBACK_HOURS * 60 * 60 * 1000);
+
+  const inputs = linkedinAccounts.map(a => ({ url: a.url }));
+
+  console.error(`  Requesting LinkedIn posts for ${linkedinAccounts.length} accounts...`);
+  const rawResults = await brightdataScrape(BD_LINKEDIN_POSTS, inputs, apiToken, errors, 'LinkedIn');
+
+  if (!rawResults || !Array.isArray(rawResults)) {
+    console.error('  No LinkedIn results from Bright Data');
+    return results;
+  }
+
+  console.error(`  Bright Data returned ${rawResults.length} raw LinkedIn posts`);
+
+  // Group posts by profile URL
+  const byProfile = {};
+  for (const post of rawResults) {
+    const profileUrl = post.author_url || post.profile_url || '';
+    if (!profileUrl) continue;
+
+    // Normalize profile URL for matching
+    const normalized = profileUrl.replace(/\/$/, '').toLowerCase();
+    if (!byProfile[normalized]) {
+      byProfile[normalized] = {
+        name: post.author_name || post.name || '',
+        headline: post.author_headline || post.headline || '',
+        posts: []
+      };
+    }
+    byProfile[normalized].posts.push(post);
+  }
+
+  // Process each account
+  for (const account of linkedinAccounts) {
+    const normalizedUrl = account.url.replace(/\/$/, '').toLowerCase();
+    const userData = byProfile[normalizedUrl];
+    if (!userData || userData.posts.length === 0) continue;
+
+    const newPosts = [];
+    for (const post of userData.posts) {
+      const postId = post.post_id || post.id || post.url || '';
+      if (!postId || state.seenLinkedin[postId]) continue;
+
+      // Date filter
+      const postDate = post.date_posted || post.published_at || post.date || null;
+      if (postDate && new Date(postDate) < cutoff) continue;
+
+      if (newPosts.length >= MAX_POSTS_PER_USER) break;
+
+      newPosts.push({
+        id: postId,
+        text: post.text || post.content || post.description || '',
+        createdAt: postDate,
+        url: post.url || post.post_url || '',
+        likes: post.likes || post.num_likes || 0,
+        comments: post.comments || post.num_comments || 0
+      });
+
+      state.seenLinkedin[postId] = Date.now();
+    }
+
+    if (newPosts.length === 0) continue;
+
+    results.push({
+      source: 'linkedin',
+      name: account.name,
+      company: account.company || '',
+      profileUrl: account.url,
+      headline: userData.headline,
+      posts: newPosts
+    });
   }
 
   return results;
@@ -574,15 +723,18 @@ async function fetchBlogContent(blogs, state, errors) {
 async function main() {
   const args = process.argv.slice(2);
   const tweetsOnly = args.includes('--tweets-only');
+  const linkedinOnly = args.includes('--linkedin-only');
   const blogsOnly = args.includes('--blogs-only');
+  const socialOnly = args.includes('--social-only'); // tweets + linkedin
 
-  const runTweets = tweetsOnly || !blogsOnly;
-  const runBlogs = blogsOnly || !tweetsOnly;
+  const runTweets = tweetsOnly || socialOnly || (!linkedinOnly && !blogsOnly);
+  const runLinkedin = linkedinOnly || socialOnly || (!tweetsOnly && !blogsOnly);
+  const runBlogs = blogsOnly || (!tweetsOnly && !linkedinOnly && !socialOnly);
 
-  const xBearerToken = process.env.X_BEARER_TOKEN;
+  const bdToken = process.env.BRIGHTDATA_API_TOKEN;
 
-  if (runTweets && !xBearerToken) {
-    console.error('X_BEARER_TOKEN not set');
+  if ((runTweets || runLinkedin) && !bdToken) {
+    console.error('BRIGHTDATA_API_TOKEN not set');
     process.exit(1);
   }
 
@@ -590,10 +742,10 @@ async function main() {
   const state = await loadState();
   const errors = [];
 
-  // Fetch tweets
-  if (runTweets) {
-    console.error('Fetching X/Twitter content (7-day lookback)...');
-    const xContent = await fetchXContent(sources.x_accounts, xBearerToken, state, errors);
+  // Fetch tweets via Bright Data
+  if (runTweets && sources.x_accounts?.length > 0) {
+    console.error('Fetching X/Twitter content via Bright Data (7-day lookback)...');
+    const xContent = await fetchXContent(sources.x_accounts, bdToken, state, errors);
     console.error(`  Found ${xContent.length} accounts with new tweets`);
 
     const totalTweets = xContent.reduce((sum, a) => sum + a.tweets.length, 0);
@@ -602,11 +754,30 @@ async function main() {
       lookbackHours: TWEET_LOOKBACK_HOURS,
       x: xContent,
       stats: { xAccounts: xContent.length, totalTweets },
-      errors: errors.filter(e => e.startsWith('X API')).length > 0
-        ? errors.filter(e => e.startsWith('X API')) : undefined
+      errors: errors.filter(e => e.startsWith('X/')).length > 0
+        ? errors.filter(e => e.startsWith('X/')) : undefined
     };
     await writeFile(join(SCRIPT_DIR, '..', 'feed-x.json'), JSON.stringify(xFeed, null, 2));
     console.error(`  feed-x.json: ${xContent.length} accounts, ${totalTweets} tweets`);
+  }
+
+  // Fetch LinkedIn posts via Bright Data
+  if (runLinkedin && sources.linkedin_accounts?.length > 0) {
+    console.error('Fetching LinkedIn content via Bright Data (7-day lookback)...');
+    const liContent = await fetchLinkedInContent(sources.linkedin_accounts, bdToken, state, errors);
+    console.error(`  Found ${liContent.length} accounts with new posts`);
+
+    const totalPosts = liContent.reduce((sum, a) => sum + a.posts.length, 0);
+    const liFeed = {
+      generatedAt: new Date().toISOString(),
+      lookbackHours: LINKEDIN_LOOKBACK_HOURS,
+      linkedin: liContent,
+      stats: { linkedinAccounts: liContent.length, totalPosts },
+      errors: errors.filter(e => e.startsWith('LinkedIn')).length > 0
+        ? errors.filter(e => e.startsWith('LinkedIn')) : undefined
+    };
+    await writeFile(join(SCRIPT_DIR, '..', 'feed-linkedin.json'), JSON.stringify(liFeed, null, 2));
+    console.error(`  feed-linkedin.json: ${liContent.length} accounts, ${totalPosts} posts`);
   }
 
   // Fetch blogs

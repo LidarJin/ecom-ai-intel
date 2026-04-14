@@ -24,6 +24,7 @@ const USER_DIR = join(homedir(), '.ecom-ai-intel');
 const CONFIG_PATH = join(USER_DIR, 'config.json');
 
 const FEED_X_URL = 'https://raw.githubusercontent.com/LidarJin/ecom-ai-intel/main/feed-x.json';
+const FEED_LINKEDIN_URL = 'https://raw.githubusercontent.com/LidarJin/ecom-ai-intel/main/feed-linkedin.json';
 const FEED_BLOGS_URL = 'https://raw.githubusercontent.com/LidarJin/ecom-ai-intel/main/feed-blogs.json';
 
 const PROMPTS_BASE = 'https://raw.githubusercontent.com/LidarJin/ecom-ai-intel/main/prompts';
@@ -76,35 +77,22 @@ async function main() {
   }
 
   // 2. Fetch feeds — try remote first, fall back to local
-  let feedX = await fetchJSON(FEED_X_URL);
-  let feedBlogs = await fetchJSON(FEED_BLOGS_URL);
-
-  // Fallback: read local feed files (for dev or when remote not yet set up)
   const scriptDir = decodeURIComponent(new URL('.', import.meta.url).pathname);
-  if (!feedX) {
-    const localPath = join(scriptDir, '..', 'feed-x.json');
-    if (existsSync(localPath)) {
-      try {
-        feedX = JSON.parse(await readFile(localPath, 'utf-8'));
-      } catch {
-        errors.push('Could not read local feed-x.json');
+
+  async function loadFeed(remoteUrl, localFilename) {
+    let feed = await fetchJSON(remoteUrl);
+    if (!feed) {
+      const localPath = join(scriptDir, '..', localFilename);
+      if (existsSync(localPath)) {
+        try { feed = JSON.parse(await readFile(localPath, 'utf-8')); } catch {}
       }
-    } else {
-      errors.push('Could not fetch tweet feed (remote or local)');
     }
+    return feed;
   }
-  if (!feedBlogs) {
-    const localPath = join(scriptDir, '..', 'feed-blogs.json');
-    if (existsSync(localPath)) {
-      try {
-        feedBlogs = JSON.parse(await readFile(localPath, 'utf-8'));
-      } catch {
-        errors.push('Could not read local feed-blogs.json');
-      }
-    } else {
-      errors.push('Could not fetch blog feed (remote or local)');
-    }
-  }
+
+  const feedX = await loadFeed(FEED_X_URL, 'feed-x.json');
+  const feedLinkedin = await loadFeed(FEED_LINKEDIN_URL, 'feed-linkedin.json');
+  const feedBlogs = await loadFeed(FEED_BLOGS_URL, 'feed-blogs.json');
 
   // 3. Load prompts: user custom > remote (GitHub) > local default
   const prompts = {};
@@ -146,13 +134,16 @@ async function main() {
     },
 
     x: feedX?.x || [],
+    linkedin: feedLinkedin?.linkedin || [],
     blogs: feedBlogs?.blogs || [],
 
     stats: {
       xAccounts: feedX?.x?.length || 0,
       totalTweets: (feedX?.x || []).reduce((sum, a) => sum + a.tweets.length, 0),
+      linkedinAccounts: feedLinkedin?.linkedin?.length || 0,
+      totalLinkedinPosts: (feedLinkedin?.linkedin || []).reduce((sum, a) => sum + a.posts.length, 0),
       blogPosts: feedBlogs?.blogs?.length || 0,
-      feedGeneratedAt: feedX?.generatedAt || feedBlogs?.generatedAt || null
+      feedGeneratedAt: feedX?.generatedAt || feedLinkedin?.generatedAt || feedBlogs?.generatedAt || null
     },
 
     prompts,
