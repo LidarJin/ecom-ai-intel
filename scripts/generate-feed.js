@@ -28,9 +28,9 @@ const MAX_POSTS_PER_USER = 5;
 const MAX_ARTICLES_PER_BLOG = 5;
 
 // Bright Data dataset IDs
-const BD_TWITTER_POSTS = 'gd_twtr_posts_by_user_url';  // Twitter posts by profile URL
-const BD_TWITTER_PROFILES = 'gd_twtr_profiles';          // Twitter profile info
-const BD_LINKEDIN_POSTS = 'gd_lyy3tktm25m4avu764';       // LinkedIn posts
+const BD_TWITTER_POSTS = 'gd_lwxkxvnf1cynvib9co';    // Twitter posts (by profile URL or post URL)
+const BD_TWITTER_PROFILES = 'gd_lwxmeb2u1cniijd7t4';  // Twitter profile info
+const BD_LINKEDIN_POSTS = 'gd_lyy3tktm25m4avu764';    // LinkedIn posts
 
 const SCRIPT_DIR = decodeURIComponent(new URL('.', import.meta.url).pathname);
 const STATE_PATH = join(SCRIPT_DIR, '..', 'state-feed.json');
