@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14T15:47:32.549Z",
+  "generatedAt": "2026-04-14T15:49:46.991Z",
   "lookbackHours": 168,
   "x": [],
   "stats": {
@@ -7,6 +7,6 @@
     "totalTweets": 0
   },
   "errors": [
-    "X/Twitter: Trigger failed HTTP 404: dataset does not exist"
+    "X/Twitter: Trigger failed HTTP 400: Incorrect discovery collector id Available types: profile_url, profile_url_most_recent_posts, profiles_array"
   ]
 }
