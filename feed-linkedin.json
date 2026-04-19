@@ -1,6 +1,12 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-04-19T09:07:49.068Z",
   "lookbackHours": 168,
   "linkedin": [],
-  "stats": { "linkedinAccounts": 0, "totalPosts": 0 }
+  "stats": {
+    "linkedinAccounts": 0,
+    "totalPosts": 0
+  },
+  "errors": [
+    "LinkedIn: Trigger failed HTTP 400: {\"error\":\"Invalid input provided\",\"code\":\"validation_error\",\"type\":\"validation\",\"line\":\"{\\\"URL\\\":\\\"https://www.linkedin.com/in/anisa-kumar-narvar/\\\"}\",\"index\":1,\"errors\":[[\"URL\",\"This input should not"
+  ]
 }
