@@ -1,19 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.gorgias.com/blog/ticket-volume": 1779611988900,
-    "https://www.gorgias.com/blog/how-to-prove-ai-agent-roi": 1779611989443,
-    "https://www.gorgias.com/blog/ecommerce-conversion-rate": 1779611989982,
-    "https://www.gorgias.com/blog/ecommerce-kpis": 1779611990523,
-    "https://www.gorgias.com/blog/benefits-voice-support-ecommerce": 1779611991059,
-    "https://www.loopreturns.com/blog/how-ecommerce-brands-save-time-post-purchase-solutions": 1779611993659,
-    "https://www.loopreturns.com/blog/how-top-brands-use-loops-workflows-transform-returns-management": 1779611994528,
-    "https://parcellab.com/blog/retention-revenue-spend-portfolio": 1779612001297,
-    "https://parcellab.com/blog/how-to-increase-post-purchase-engagement": 1779612002897,
-    "https://www.klaviyo.com/blog/best-ai-prompts-email-marketers": 1779612005457,
-    "https://www.klaviyo.com/blog/discount-pricing-strategies": 1779612006129,
-    "https://redo.com/blogs/the-conversion-imperative-how-redo-is-reimagining-personalization-for-dtc-brands": 1779612007603,
-    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1779612008250,
     "https://www.gorgias.com/blog/gorgias-mcp": 1780217778514,
     "https://www.gorgias.com/blog/how-to-calculate-nps": 1780217779062,
     "https://www.gorgias.com/blog/helpdesk-automation": 1780217779593,
@@ -26,7 +13,14 @@
     "https://www.klaviyo.com/blog/why-klaviyo-is-betting-on-infrastructure": 1780217793036,
     "https://www.klaviyo.com/blog/product-feeds-in-text-dynamic-product-personalization-for-sms-and-rcs": 1780217793224,
     "https://redo.com/blogs/redo-acquires-returnbear-to-enhance-international-returns-for-ecommerce-brands": 1780217794753,
-    "https://redo.com/blogs/international-returns-in-country-model": 1780217795380
+    "https://redo.com/blogs/international-returns-in-country-model": 1780217795380,
+    "https://www.loopreturns.com/blog/ecommerce-brands-saving-money-post-purchase-solutions": 1780824436085,
+    "https://parcellab.com/blog/retail-trends-and-predictions-shaping-ecommerce-in-2026": 1780824440574,
+    "https://parcellab.com/blog/p30495": 1780824440779,
+    "https://www.klaviyo.com/blog/multilingual-customer-agent-and-whatsapp": 1780824443686,
+    "https://www.klaviyo.com/blog/personalized-product-recommendations-in-sms-and-rcs": 1780824444562,
+    "https://redo.com/blogs/best-ecommerce-returns-software-2026": 1780824446023,
+    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1780824446143
   },
   "seenLinkedin": {}
 }
