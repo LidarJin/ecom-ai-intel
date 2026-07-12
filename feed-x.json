@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-05T09:16:18.344Z",
+  "generatedAt": "2026-07-12T08:26:43.229Z",
   "lookbackHours": 168,
   "x": [],
   "stats": {
@@ -7,6 +7,6 @@
     "totalTweets": 0
   },
   "errors": [
-    "X/Twitter: Trigger failed HTTP 400: {\"error\":\"Invalid input provided\",\"code\":\"validation_error\",\"type\":\"validation\",\"line\":\"{\\\"URL\\\":\\\"https://x.com/tobi\\\",\\\"start_date\\\":\\\"06-28-2026\\\",\\\"end_date\\\":\\\"07-05-2026\\\"}\",\"index\":1,\"errors\":["
+    "X/Twitter: Trigger failed HTTP 400: {\"error\":\"Invalid input provided\",\"code\":\"validation_error\",\"type\":\"validation\",\"line\":\"{\\\"URL\\\":\\\"https://x.com/tobi\\\",\\\"start_date\\\":\\\"07-05-2026\\\",\\\"end_date\\\":\\\"07-12-2026\\\"}\",\"index\":1,\"errors\":["
   ]
 }
