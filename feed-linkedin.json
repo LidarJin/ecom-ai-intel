@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T08:26:43.332Z",
+  "generatedAt": "2026-07-19T08:28:20.489Z",
   "lookbackHours": 168,
   "linkedin": [],
   "stats": {
@@ -7,6 +7,6 @@
     "totalPosts": 0
   },
   "errors": [
-    "LinkedIn: Trigger failed HTTP 400: {\"error\":\"Invalid input provided\",\"code\":\"validation_error\",\"type\":\"validation\",\"line\":\"{\\\"URL\\\":\\\"https://www.linkedin.com/in/anisa-kumar-narvar/\\\"}\",\"index\":1,\"errors\":[[\"URL\",\"This input should not"
+    "LinkedIn: Trigger failed HTTP 401: Token expired"
   ]
 }

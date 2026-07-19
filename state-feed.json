@@ -1,22 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.gorgias.com/blog/cro-a-b-tests": 1782638536203,
-    "https://www.gorgias.com/blog/ai-agent-actions": 1782638536735,
-    "https://www.gorgias.com/blog/bfcm-customer-support-tips": 1782638541855,
-    "https://www.loopreturns.com/blog/ecommerce-brands-saving-money-post-purchase-solutions": 1782638544415,
-    "https://www.loopreturns.com/blog/dtc-returns-cost-customer-loyalty-playbook": 1782638544625,
-    "https://corp.narvar.com/blog/guarantee-the-delivery-experience-not-just-the-package": 1782638544988,
-    "https://corp.narvar.com/blog/post-purchase-has-plenty-of-data-now-what": 1782638545016,
-    "https://corp.narvar.com/blog/how-agentic-ai-will-disrupt-post-purchase-experiences": 1782638545042,
-    "https://corp.narvar.com/blog/santa-sets-the-standard-for-peak-season-operational-efficiency": 1782638545099,
-    "https://corp.narvar.com/blog/all-i-want-for-christmas-is-revenue-new-holiday-shopping-data-shows-how-to-earn-it": 1782638545147,
-    "https://parcellab.com/blog/retail-trends-and-predictions-shaping-ecommerce-in-2026": 1782638549351,
-    "https://parcellab.com/blog/p30495": 1782638550245,
-    "https://www.klaviyo.com/blog/marketing-strategy-for-agentic-commerce": 1782638551709,
-    "https://www.klaviyo.com/blog/bfcm-checklist-guide": 1782638552337,
-    "https://redo.com/blogs/best-ecommerce-returns-software-2026": 1782638553581,
-    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1782638553664,
     "https://www.gorgias.com/blog/gorgias-shopify-integration": 1783242982055,
     "https://www.loopreturns.com/blog/why-ai-built-for-ecommerce-leading-market": 1783242984465,
     "https://parcellab.com/blog/eu-withdrawal-button": 1783242989600,
@@ -33,7 +17,16 @@
     "https://www.klaviyo.com/blog/internal-alerts": 1783844816738,
     "https://www.klaviyo.com/blog/enterprise-lifecycle-marketing": 1783844817603,
     "https://redo.com/blogs/the-conversion-imperative-how-redo-is-reimagining-personalization-for-dtc-brands": 1783844819086,
-    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1783844819248
+    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1783844819248,
+    "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1784449703893,
+    "https://www.loopreturns.com/blog/how-top-brands-use-loops-workflows-transform-returns-management": 1784449704717,
+    "https://corp.narvar.com/blog/the-checkout-decision-that-shows-up-twice-on-your-p-l": 1784449706529,
+    "https://parcellab.com/blog/how-retailers-can-reduce-their-ecommerce-return-rates-in-2026": 1784449710890,
+    "https://parcellab.com/blog/nrf-26-recap-how-true-classic-built-a-post-purchase-journey-that-never-ends": 1784449711118,
+    "https://www.klaviyo.com/blog/warehouse-data-connection": 1784449715330,
+    "https://www.klaviyo.com/blog/eu-email-tracking-pixels": 1784449716099,
+    "https://redo.com/blogs/redo-acquires-returnbear-to-enhance-international-returns-for-ecommerce-brands": 1784449717502,
+    "https://redo.com/blogs/international-returns-in-country-model": 1784449717613
   },
   "seenLinkedin": {}
 }
