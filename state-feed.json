@@ -1,23 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.gorgias.com/blog/gorgias-shopify-integration": 1783242982055,
-    "https://www.loopreturns.com/blog/why-ai-built-for-ecommerce-leading-market": 1783242984465,
-    "https://parcellab.com/blog/eu-withdrawal-button": 1783242989600,
-    "https://parcellab.com/blog/ai-agents-without-the-hype-a-practical-path-to-real-retail-impact": 1783242990794,
-    "https://www.klaviyo.com/blog/kldn-2026": 1783242992255,
-    "https://www.klaviyo.com/blog/klaviyo-composer-customer-agent-launch": 1783242992866,
-    "https://redo.com/blogs/what-is-wismo": 1783242994144,
-    "https://redo.com/blogs/why-exchange-rate-retention-metric": 1783242994212,
-    "https://www.gorgias.com/blog/best-ecommerce-helpdesk": 1783844804622,
-    "https://www.loopreturns.com/blog/how-loops-ecommerce-tools-build-customer-confidence": 1783844807640,
-    "https://www.loopreturns.com/blog/how-ecommerce-brands-save-time-post-purchase-solutions": 1783844808027,
-    "https://parcellab.com/blog/retention-revenue-spend-portfolio": 1783844812796,
-    "https://parcellab.com/blog/returns-revenue-recovery-playbook": 1783844813745,
-    "https://www.klaviyo.com/blog/internal-alerts": 1783844816738,
-    "https://www.klaviyo.com/blog/enterprise-lifecycle-marketing": 1783844817603,
-    "https://redo.com/blogs/the-conversion-imperative-how-redo-is-reimagining-personalization-for-dtc-brands": 1783844819086,
-    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1783844819248,
     "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1784449703893,
     "https://www.loopreturns.com/blog/how-top-brands-use-loops-workflows-transform-returns-management": 1784449704717,
     "https://corp.narvar.com/blog/the-checkout-decision-that-shows-up-twice-on-your-p-l": 1784449706529,
@@ -26,7 +9,16 @@
     "https://www.klaviyo.com/blog/warehouse-data-connection": 1784449715330,
     "https://www.klaviyo.com/blog/eu-email-tracking-pixels": 1784449716099,
     "https://redo.com/blogs/redo-acquires-returnbear-to-enhance-international-returns-for-ecommerce-brands": 1784449717502,
-    "https://redo.com/blogs/international-returns-in-country-model": 1784449717613
+    "https://redo.com/blogs/international-returns-in-country-model": 1784449717613,
+    "https://www.gorgias.com/blog/ai-copilot-customer-service": 1785054907402,
+    "https://www.loopreturns.com/blog/ecommerce-brands-saving-money-post-purchase-solutions": 1785054909835,
+    "https://www.loopreturns.com/blog/ecommerce-order-editing-increases-loyalty-revenue": 1785054910216,
+    "https://parcellab.com/blog/retail-trends-and-predictions-shaping-ecommerce-in-2026": 1785054916798,
+    "https://parcellab.com/blog/cx-automation-without-engineers": 1785054917621,
+    "https://www.klaviyo.com/blog/labor-day-marketing": 1785054919433,
+    "https://www.klaviyo.com/blog/q2-klaviyo-integrations-figma-yotpo": 1785054920146,
+    "https://redo.com/blogs/best-ecommerce-returns-software-2026": 1785054921289,
+    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1785054921343
   },
   "seenLinkedin": {}
 }
