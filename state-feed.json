@@ -1,15 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1784449703893,
-    "https://www.loopreturns.com/blog/how-top-brands-use-loops-workflows-transform-returns-management": 1784449704717,
-    "https://corp.narvar.com/blog/the-checkout-decision-that-shows-up-twice-on-your-p-l": 1784449706529,
-    "https://parcellab.com/blog/how-retailers-can-reduce-their-ecommerce-return-rates-in-2026": 1784449710890,
-    "https://parcellab.com/blog/nrf-26-recap-how-true-classic-built-a-post-purchase-journey-that-never-ends": 1784449711118,
-    "https://www.klaviyo.com/blog/warehouse-data-connection": 1784449715330,
-    "https://www.klaviyo.com/blog/eu-email-tracking-pixels": 1784449716099,
-    "https://redo.com/blogs/redo-acquires-returnbear-to-enhance-international-returns-for-ecommerce-brands": 1784449717502,
-    "https://redo.com/blogs/international-returns-in-country-model": 1784449717613,
     "https://www.gorgias.com/blog/ai-copilot-customer-service": 1785054907402,
     "https://www.loopreturns.com/blog/ecommerce-brands-saving-money-post-purchase-solutions": 1785054909835,
     "https://www.loopreturns.com/blog/ecommerce-order-editing-increases-loyalty-revenue": 1785054910216,
@@ -18,7 +9,15 @@
     "https://www.klaviyo.com/blog/labor-day-marketing": 1785054919433,
     "https://www.klaviyo.com/blog/q2-klaviyo-integrations-figma-yotpo": 1785054920146,
     "https://redo.com/blogs/best-ecommerce-returns-software-2026": 1785054921289,
-    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1785054921343
+    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1785054921343,
+    "https://www.loopreturns.com/blog/consumer-paid-returns": 1785659546077,
+    "https://www.loopreturns.com/blog/why-ai-built-for-ecommerce-leading-market": 1785659546871,
+    "https://parcellab.com/blog/transactional-vs-marketing-email-framework": 1785659551340,
+    "https://parcellab.com/blog/eu-withdrawal-button": 1785659552623,
+    "https://www.klaviyo.com/blog/3-ways-to-use-marketing-agents-for-autonomous-marketing": 1785659554155,
+    "https://www.klaviyo.com/blog/how-kai-klaviyo-helps-brands-grow-smarter": 1785659554742,
+    "https://redo.com/blogs/the-conversion-imperative-how-redo-is-reimagining-personalization-for-dtc-brands": 1785659555805,
+    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1785659555855
   },
   "seenLinkedin": {}
 }
