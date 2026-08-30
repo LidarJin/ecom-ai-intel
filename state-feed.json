@@ -1,25 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1786259152922,
-    "https://www.loopreturns.com/blog/how-loops-ecommerce-tools-build-customer-confidence": 1786259153214,
-    "https://corp.narvar.com/blog/grinch-proof-scrooge-savvy-protect-your-margins-post-purchase": 1786259153998,
-    "https://corp.narvar.com/blog/santa-sets-the-standard-for-peak-season-operational-efficiency": 1786259154055,
-    "https://corp.narvar.com/blog/yule-love-this-tips-to-sleigh-holiday-revenue-this-season": 1786259154118,
-    "https://parcellab.com/blog/how-retailers-can-reduce-their-ecommerce-return-rates-in-2026": 1786259158941,
-    "https://parcellab.com/blog/nrf-26-recap-how-true-classic-built-a-post-purchase-journey-that-never-ends": 1786259159813,
-    "https://www.klaviyo.com/blog/push-notification-marketing-strategy": 1786259161358,
-    "https://www.klaviyo.com/blog/klaviyo-figma-integrations-design-to-inbox": 1786259162643,
-    "https://redo.com/blogs/redo-acquires-returnbear-to-enhance-international-returns-for-ecommerce-brands": 1786259164154,
-    "https://redo.com/blogs/international-returns-in-country-model": 1786259164271,
-    "https://www.loopreturns.com/blog/how-ecommerce-brands-save-time-post-purchase-solutions": 1786863047729,
-    "https://www.loopreturns.com/blog/how-top-brands-use-loops-workflows-transform-returns-management": 1786863048218,
-    "https://parcellab.com/blog/retention-revenue-spend-portfolio": 1786863052493,
-    "https://parcellab.com/blog/returns-revenue-recovery-playbook": 1786863053590,
-    "https://www.klaviyo.com/blog/automated-flow-monitoring-claude": 1786863056540,
-    "https://www.klaviyo.com/blog/grow-email-lists-with-instagram": 1786863057545,
-    "https://redo.com/blogs/what-is-wismo": 1786863058963,
-    "https://redo.com/blogs/returnlogic-is-joining-redo": 1786863059016,
     "https://www.gorgias.com/blog/we-rebuilt-chat": 1787467892095,
     "https://www.loopreturns.com/blog/authors/alex-rosas": 1787467894959,
     "https://www.loopreturns.com/blog/authors/samir-kamnani": 1787467895974,
@@ -29,7 +10,16 @@
     "https://www.klaviyo.com/blog/memorial-day-bfcm-sms-lessons": 1787467906461,
     "https://www.klaviyo.com/blog/personalisation-paradox": 1787467907222,
     "https://redo.com/blogs/best-ecommerce-returns-software-2026": 1787467908823,
-    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1787467908980
+    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1787467908980,
+    "https://www.loopreturns.com/blog/consumer-paid-returns": 1788090205224,
+    "https://www.loopreturns.com/blog/why-ai-built-for-ecommerce-leading-market": 1788090205737,
+    "https://corp.narvar.com/blog/its-the-thought-that-counts-right-what-retailers-are-getting-wrong-about-holiday-shoppers": 1788090205982,
+    "https://parcellab.com/blog/transactional-vs-marketing-email-framework": 1788090210750,
+    "https://parcellab.com/blog/eu-withdrawal-button": 1788090211703,
+    "https://www.klaviyo.com/blog/scale-email-production-claude-klaviyo": 1788090214862,
+    "https://www.klaviyo.com/blog/best-social-media-management-tools": 1788090216155,
+    "https://redo.com/blogs/the-conversion-imperative-how-redo-is-reimagining-personalization-for-dtc-brands": 1788090217748,
+    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1788090217793
   },
   "seenLinkedin": {}
 }
