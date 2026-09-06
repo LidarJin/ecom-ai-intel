@@ -1,16 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.gorgias.com/blog/we-rebuilt-chat": 1787467892095,
-    "https://www.loopreturns.com/blog/authors/alex-rosas": 1787467894959,
-    "https://www.loopreturns.com/blog/authors/samir-kamnani": 1787467895974,
-    "https://corp.narvar.com/blog/10-things-to-do-right-now-to-get-peak-ready": 1787467896999,
-    "https://parcellab.com/blog/retail-trends-and-predictions-shaping-ecommerce-in-2026": 1787467902756,
-    "https://parcellab.com/blog/cx-automation-without-engineers": 1787467903968,
-    "https://www.klaviyo.com/blog/memorial-day-bfcm-sms-lessons": 1787467906461,
-    "https://www.klaviyo.com/blog/personalisation-paradox": 1787467907222,
-    "https://redo.com/blogs/best-ecommerce-returns-software-2026": 1787467908823,
-    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1787467908980,
     "https://www.loopreturns.com/blog/consumer-paid-returns": 1788090205224,
     "https://www.loopreturns.com/blog/why-ai-built-for-ecommerce-leading-market": 1788090205737,
     "https://corp.narvar.com/blog/its-the-thought-that-counts-right-what-retailers-are-getting-wrong-about-holiday-shoppers": 1788090205982,
@@ -19,7 +9,17 @@
     "https://www.klaviyo.com/blog/scale-email-production-claude-klaviyo": 1788090214862,
     "https://www.klaviyo.com/blog/best-social-media-management-tools": 1788090216155,
     "https://redo.com/blogs/the-conversion-imperative-how-redo-is-reimagining-personalization-for-dtc-brands": 1788090217748,
-    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1788090217793
+    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1788090217793,
+    "https://www.gorgias.com/blog/ai-copilot-customer-service": 1788691381896,
+    "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1788691384229,
+    "https://www.loopreturns.com/blog/how-loops-ecommerce-tools-build-customer-confidence": 1788691384477,
+    "https://corp.narvar.com/blog/when-does-return-season-really-start": 1788691386001,
+    "https://parcellab.com/blog/how-retailers-can-reduce-their-ecommerce-return-rates-in-2026": 1788691391569,
+    "https://parcellab.com/blog/nrf-26-recap-how-true-classic-built-a-post-purchase-journey-that-never-ends": 1788691392535,
+    "https://www.klaviyo.com/blog/luxury-ecommerce-segmentation": 1788691394120,
+    "https://www.klaviyo.com/blog/ai-customer-service-agent-as-sales-tool": 1788691394807,
+    "https://redo.com/blogs/redo-acquires-returnbear-to-enhance-international-returns-for-ecommerce-brands": 1788691396357,
+    "https://redo.com/blogs/international-returns-in-country-model": 1788691396497
   },
   "seenLinkedin": {}
 }
