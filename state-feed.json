@@ -1,20 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.gorgias.com/blog/inside-the-ai-agent-benchmark": 1789902349495,
-    "https://www.loopreturns.com/blog/how-ecommerce-brands-save-time-post-purchase-solutions": 1789902352842,
-    "https://www.loopreturns.com/blog/authors/corinne-dandria": 1789902353663,
-    "https://corp.narvar.com/blog/the-checkout-decision-that-shows-up-twice-on-your-p-l": 1789902354091,
-    "https://corp.narvar.com/blog/bridging-ecommerce-and-in-store": 1789902354661,
-    "https://corp.narvar.com/blog/stop-the-steal-how-to-outsmart-todays-porch-pirates": 1789902355244,
-    "https://corp.narvar.com/blog/all-the-better-to-trick-you-with-fraudsters-are-passing-as-vip-consumers": 1789902355875,
-    "https://corp.narvar.com/blog/how-harry-rosen-drove-13-conversion-lift-with-intelligent-estimated-delivery-dates": 1789902356449,
-    "https://parcellab.com/blog/retention-revenue-spend-portfolio": 1789902361247,
-    "https://parcellab.com/blog/returns-revenue-recovery-playbook": 1789902362082,
-    "https://www.klaviyo.com/blog/agentic-customer-experience": 1789902364342,
-    "https://www.klaviyo.com/blog/ai-customer-experience-strategy": 1789902365112,
-    "https://redo.com/blogs/what-is-wismo": 1789902366657,
-    "https://redo.com/blogs/recover-smile-integration": 1789902366767,
     "https://www.loopreturns.com/blog/reale-actives-ecommerce-returns": 1790509795870,
     "https://www.loopreturns.com/blog/consumer-paid-returns": 1790509796283,
     "https://corp.narvar.com/blog/closed-tickets-arent-kept-customers": 1790509798131,
@@ -23,7 +9,15 @@
     "https://www.klaviyo.com/blog/singles-day-marketing-ideas": 1790509804718,
     "https://www.klaviyo.com/blog/halloween-email-and-sms-examples": 1790509805340,
     "https://redo.com/blogs/redo-acquires-returnbear-to-enhance-international-returns-for-ecommerce-brands": 1790509806363,
-    "https://redo.com/blogs/international-returns-in-country-model": 1790509806416
+    "https://redo.com/blogs/international-returns-in-country-model": 1790509806416,
+    "https://www.loopreturns.com/blog/authors/alex-rosas": 1791115778010,
+    "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1791115778421,
+    "https://parcellab.com/blog/retail-trends-and-predictions-shaping-ecommerce-in-2026": 1791115783363,
+    "https://parcellab.com/blog/top-7-return-management-solutions": 1791115783775,
+    "https://www.klaviyo.com/blog/user-generated-content-ugc": 1791115785491,
+    "https://www.klaviyo.com/blog/abandoned-cart-benchmarks": 1791115786145,
+    "https://redo.com/blogs/best-ecommerce-returns-software-2026": 1791115787215,
+    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1791115787255
   },
   "seenLinkedin": {}
 }
