@@ -1,14 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.loopreturns.com/blog/authors/alex-rosas": 1791115778010,
-    "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1791115778421,
-    "https://parcellab.com/blog/retail-trends-and-predictions-shaping-ecommerce-in-2026": 1791115783363,
-    "https://parcellab.com/blog/top-7-return-management-solutions": 1791115783775,
-    "https://www.klaviyo.com/blog/user-generated-content-ugc": 1791115785491,
-    "https://www.klaviyo.com/blog/abandoned-cart-benchmarks": 1791115786145,
-    "https://redo.com/blogs/best-ecommerce-returns-software-2026": 1791115787215,
-    "https://redo.com/blogs/why-ecommerce-needs-a-fresh-approach-to-email-and-sms-marketing": 1791115787255,
     "https://www.gorgias.com/blog/customer-service-responsibilities": 1791721991190,
     "https://www.gorgias.com/blog/ecommerce-kpis": 1791721991235,
     "https://www.gorgias.com/blog/how-to-calculate-nps": 1791721991278,
@@ -30,7 +22,15 @@
     "https://parcellab.com/blog/how-retailers-can-reduce-their-ecommerce-return-rates-in-2026": 1792320466200,
     "https://parcellab.com/blog/nrf-26-recap-how-true-classic-built-a-post-purchase-journey-that-never-ends": 1792320466673,
     "https://www.klaviyo.com/blog/ai-generated-code-engineering": 1792320467448,
-    "https://www.klaviyo.com/blog/criquet-shirts-klaviyo-originals": 1792320468060
+    "https://www.klaviyo.com/blog/criquet-shirts-klaviyo-originals": 1792320468060,
+    "https://www.gorgias.com/blog/we-rebuilt-chat": 1792926483792,
+    "https://www.loopreturns.com/blog/how-loops-ecommerce-tools-build-customer-confidence": 1792926487075,
+    "https://www.loopreturns.com/blog/how-ecommerce-brands-save-time-post-purchase-solutions": 1792926487430,
+    "https://corp.narvar.com/blog/your-sms-program-is-only-as-big-as-your-opt-in": 1792926487873,
+    "https://parcellab.com/blog/aftership-vs-narvar": 1792926492851,
+    "https://parcellab.com/blog/copilot-can-now-do-the-work": 1792926493911,
+    "https://www.klaviyo.com/blog/boxing-day-sales-uk": 1792926495058,
+    "https://www.klaviyo.com/blog/custom-product-feeds": 1792926495689
   },
   "seenLinkedin": {}
 }
