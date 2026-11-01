@@ -1,28 +1,6 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.gorgias.com/blog/customer-service-responsibilities": 1791721991190,
-    "https://www.gorgias.com/blog/ecommerce-kpis": 1791721991235,
-    "https://www.gorgias.com/blog/how-to-calculate-nps": 1791721991278,
-    "https://www.gorgias.com/blog/international-saas-salary-calculator": 1791721991316,
-    "https://www.gorgias.com/blog/respond-social-comments": 1791721991356,
-    "https://www.loopreturns.com/blog/authors/samir-kamnani": 1791721993331,
-    "https://www.loopreturns.com/blog/package-protection-ecommerce": 1791721993610,
-    "https://corp.narvar.com/blog/why-your-support-queue-floods-in-december": 1791721994518,
-    "https://corp.narvar.com/blog/pull-this-report-before-you-hire-holiday-helpdesk-temps": 1791721995055,
-    "https://parcellab.com/blog/transactional-vs-marketing-email-framework": 1791721999818,
-    "https://parcellab.com/blog/cx-automation-without-engineers": 1791722000324,
-    "https://www.klaviyo.com/blog/hanukkah-marketing-ideas": 1791722000979,
-    "https://www.klaviyo.com/blog/how-to-use-ai-shopping-assistant": 1791722001598,
-    "https://redo.com/blogs/the-conversion-imperative-how-redo-is-reimagining-personalization-for-dtc-brands": 1791722002785,
-    "https://redo.com/blogs/simplifying-returns-how-redo-helps-ecommerce-brands-turn-a-cost-center-into-a-competitive-advantage": 1791722002836,
-    "https://www.loopreturns.com/blog/reale-actives-ecommerce-returns": 1792320461927,
-    "https://www.loopreturns.com/blog/consumer-paid-returns": 1792320462173,
-    "https://corp.narvar.com/blog/your-split-shipment-isnt-lost-but-your-shopper-doesnt-know-that": 1792320462376,
-    "https://parcellab.com/blog/how-retailers-can-reduce-their-ecommerce-return-rates-in-2026": 1792320466200,
-    "https://parcellab.com/blog/nrf-26-recap-how-true-classic-built-a-post-purchase-journey-that-never-ends": 1792320466673,
-    "https://www.klaviyo.com/blog/ai-generated-code-engineering": 1792320467448,
-    "https://www.klaviyo.com/blog/criquet-shirts-klaviyo-originals": 1792320468060,
     "https://www.gorgias.com/blog/we-rebuilt-chat": 1792926483792,
     "https://www.loopreturns.com/blog/how-loops-ecommerce-tools-build-customer-confidence": 1792926487075,
     "https://www.loopreturns.com/blog/how-ecommerce-brands-save-time-post-purchase-solutions": 1792926487430,
@@ -30,7 +8,12 @@
     "https://parcellab.com/blog/aftership-vs-narvar": 1792926492851,
     "https://parcellab.com/blog/copilot-can-now-do-the-work": 1792926493911,
     "https://www.klaviyo.com/blog/boxing-day-sales-uk": 1792926495058,
-    "https://www.klaviyo.com/blog/custom-product-feeds": 1792926495689
+    "https://www.klaviyo.com/blog/custom-product-feeds": 1792926495689,
+    "https://www.loopreturns.com/blog/authors/alex-rosas": 1793538194036,
+    "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1793538194450,
+    "https://corp.narvar.com/blog/gifts-deadlines-and-the-three-silent-days-before-a-package-ships": 1793538195604,
+    "https://www.klaviyo.com/blog/gartner-magic-quadrant-multichannel-marketing-hubs": 1793538197636,
+    "https://www.klaviyo.com/blog/ai-marketing-analytics-example": 1793538198316
   },
   "seenLinkedin": {}
 }
