@@ -1,19 +1,17 @@
 {
   "seenTweets": {},
   "seenArticles": {
-    "https://www.gorgias.com/blog/we-rebuilt-chat": 1792926483792,
-    "https://www.loopreturns.com/blog/how-loops-ecommerce-tools-build-customer-confidence": 1792926487075,
-    "https://www.loopreturns.com/blog/how-ecommerce-brands-save-time-post-purchase-solutions": 1792926487430,
-    "https://corp.narvar.com/blog/your-sms-program-is-only-as-big-as-your-opt-in": 1792926487873,
-    "https://parcellab.com/blog/aftership-vs-narvar": 1792926492851,
-    "https://parcellab.com/blog/copilot-can-now-do-the-work": 1792926493911,
-    "https://www.klaviyo.com/blog/boxing-day-sales-uk": 1792926495058,
-    "https://www.klaviyo.com/blog/custom-product-feeds": 1792926495689,
     "https://www.loopreturns.com/blog/authors/alex-rosas": 1793538194036,
     "https://www.loopreturns.com/blog/eu-withdrawal-button-compliance": 1793538194450,
     "https://corp.narvar.com/blog/gifts-deadlines-and-the-three-silent-days-before-a-package-ships": 1793538195604,
     "https://www.klaviyo.com/blog/gartner-magic-quadrant-multichannel-marketing-hubs": 1793538197636,
-    "https://www.klaviyo.com/blog/ai-marketing-analytics-example": 1793538198316
+    "https://www.klaviyo.com/blog/ai-marketing-analytics-example": 1793538198316,
+    "https://www.gorgias.com/blog/ai-productivity-cx-teams-vs-magnificent-7": 1794143282343,
+    "https://www.loopreturns.com/blog/reale-actives-ecommerce-returns": 1794143285058,
+    "https://www.loopreturns.com/blog/consumer-paid-returns": 1794143285274,
+    "https://www.klaviyo.com/blog/email-segmentation-ideas": 1794143286830,
+    "https://www.klaviyo.com/blog/customer-agent-use-cases": 1794143287421,
+    "https://redo.com/blogs/redo-acquires-relist": 1794143289250
   },
   "seenLinkedin": {}
 }
